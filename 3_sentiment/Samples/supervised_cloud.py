@@ -101,7 +101,7 @@ w2v_dnn.fit(avg_wv_train_features, y_train, epochs=5, batch_size=batch_size,
             shuffle=True, validation_split=0.1, verbose=1)
 y_pred = w2v_dnn.predict_classes(avg_wv_test_features)
 predictions = le.inverse_transform(y_pred)
-meu.display_model_performance_metrics(true_labels=test_sentiments, predicted_labels=predictions,
+meu.display_model_performance_metrics(true_labels=norm_test_sentiments, predicted_labels=predictions,
                                       classes=['positive', 'negative'])
 print("#dnn w2v ended.\n\n")
 
@@ -114,6 +114,6 @@ glove_dnn.fit(train_glove_features, y_train, epochs=5, batch_size=batch_size,
               shuffle=True, validation_split=0.1, verbose=1)
 y_pred = glove_dnn.predict_classes(test_glove_features)
 predictions = le.inverse_transform(y_pred)
-meu.display_model_performance_metrics(true_labels=test_sentiments, predicted_labels=predictions,
+meu.display_model_performance_metrics(true_labels=norm_test_sentiments, predicted_labels=predictions,
                                       classes=['positive', 'negative'])
 print("#dnn glove ended\n\n")
